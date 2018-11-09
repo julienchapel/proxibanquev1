@@ -1,9 +1,7 @@
-package fr.proxibanque.metier;
+package fr.formation.proxibanquev1.metier;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import fr.proxi.client.Client;
 
 public class Agency {
 

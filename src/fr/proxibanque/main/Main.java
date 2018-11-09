@@ -1,6 +1,6 @@
 package fr.proxibanque.main;
 
-import fr.proxibanque.application.Management;
+import fr.formation.proxibanquev1.metier.Management;
 
 public class Main {
 

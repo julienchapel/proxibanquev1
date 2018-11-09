@@ -1,12 +1,10 @@
-package fr.proxibanque.application;
+package fr.formation.proxibanquev1.metier;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import fr.proxi.client.Client;
-import fr.proxibanque.data.DataStock;
-import fr.proxibanque.metier.Advisor;
-import fr.proxibanque.metier.Agency;
+import fr.formation.proxibanque.persistance.DataStock;
+import fr.formation.proxibanquev1.presentation.Interaction;
 
 public class Management {
 
@@ -15,14 +13,13 @@ public class Management {
 	int clientNumber = 0;
 	public boolean running = true;
 
-	public void start() { // permet de lancer le programme via la methode display
+	public void start() { 
 
 		loadtestData();
 		while (this.running) {
 			this.ManageMainMenu();
 		}
 		
-		// this.interaction.mainMenu();
 		readClient();
 
 	}
@@ -186,6 +183,7 @@ public class Management {
 
 		this.dataStock.agencyList = new ArrayList<>();
 		Agency agency = new Agency("abc12", "12/01/1998");
+		Manager manager = new Manager("bernard");
 
 		agency.advisorList = new ArrayList<>();
 		Advisor advisor = new Advisor("conseiller 1");
@@ -235,28 +233,7 @@ public class Management {
 		this.interaction.display("3) Supprimer le client");
 		
 		this.editClient();
-		//this.interaction.clientMenu();
 		
-		//System.out.println("Nom ?");
-		//String InputNameClient = this.interaction.readData();
-		//System.out.println("prénom ?");
-		//String InputFirstNameClient = this.interaction.readData();
-
-		//for (int i = 0; i < dataStock.agencyList.get(0).advisorList.get(0).listClient.size(); i++) {
-
-			//if (InputNameClient.equals(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).name)
-				//&& InputFirstNameClient.equals(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).firstname)){
-
-				//System.out.println("Vous avez choisi " + InputNameClient + " " + InputFirstNameClient);
-
-				//System.out.println("");
-			//} 
-		//}
-		
-		
-		
-		
-	
 	}
 
 	public void exitProxibanque() {

@@ -1,4 +1,4 @@
-package fr.proxi.client;
+package fr.formation.proxibanquev1.metier;
 
 public class Client {
 	
@@ -9,6 +9,9 @@ public class Client {
 	public String zipCode;
 	public String city;
 	public String phone;
+	public CurrentAccount currentAccount;
+	public SavingAccount savingAccount;
+	public Card card;
 
 	public Client(String name, String firstname, String  adresse,
 			String zipCode, String city, String phone) {
@@ -19,7 +22,9 @@ public class Client {
 		this.zipCode = zipCode;
 		this.city = city;
 		this.phone = phone;
-		
+		this.currentAccount = new CurrentAccount();
+		this.savingAccount = new SavingAccount();
+		this.card = new Card();
 		
 	}
  

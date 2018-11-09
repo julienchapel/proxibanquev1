@@ -1,9 +1,9 @@
-package fr.proxibanque.application;
+package fr.formation.proxibanquev1.presentation;
 
 import java.util.Scanner;
 
-import fr.proxi.client.Client;
-import fr.proxibanque.metier.Advisor;
+import fr.formation.proxibanquev1.metier.Advisor;
+import fr.formation.proxibanquev1.metier.Client;
 
 public class Interaction {
 
