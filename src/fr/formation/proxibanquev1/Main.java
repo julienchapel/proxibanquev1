@@ -1,4 +1,4 @@
-package fr.proxibanque.main;
+package fr.formation.proxibanquev1;
 
 import fr.formation.proxibanquev1.metier.Management;
 

@@ -26,18 +26,18 @@ public class Management {
 
 	public void createClient() {
 
-		System.out.println("Vous avez choisi de créer un nouveau client");
-		System.out.println("Veuillez indiquer le nom du client ");
+		this.interaction.display("Vous avez choisi de créer un nouveau client");
+		this.interaction.display("Veuillez indiquer le nom du client ");
 		String InputName = this.interaction.readData();
-		System.out.println("Veuillez indiquer le prénom du client ");
+		this.interaction.display("Veuillez indiquer le prénom du client ");
 		String InputFirstname = this.interaction.readData();
-		System.out.println("Veuillez indiquer l'adresse du client ");
+		this.interaction.display("Veuillez indiquer l'adresse du client ");
 		String InputAdress = this.interaction.readData();
-		System.out.println("Veuillez indiquer le code postal du client ");
+		this.interaction.display("Veuillez indiquer le code postal du client ");
 		String InputZipCode = this.interaction.readData();
-		System.out.println("Veuillez indiquer la ville du client ");
+		this.interaction.display("Veuillez indiquer la ville du client ");
 		String InputCity = this.interaction.readData();
-		System.out.println("Veuillez indiquer le numéro de téléphone du client ");
+		this.interaction.display("Veuillez indiquer le numéro de téléphone du client ");
 		String InputPhoneNumber = this.interaction.readData();
 
 		Client newClient = new Client(InputName, InputFirstname, InputAdress, InputZipCode, InputCity,
@@ -51,6 +51,8 @@ public class Management {
 		System.out.println(InputCity);
 		System.out.println(InputPhoneNumber);
 
+		this.interaction.display("");
+		this.interaction.display("");
 		this.dataStock.agencyList.get(0).advisorList.get(0).listClient.add(newClient);
 	}
 
@@ -63,6 +65,7 @@ public class Management {
 	public void editClient() {
 		
 		String userInput = this.interaction.readData();
+		if (userInput.matches("^-?[0-9]*$") && Integer.parseInt(userInput)<dataStock.agencyList.get(0).advisorList.get(0).listClient.size()) {
 		int p = Integer.parseInt(userInput);
 		
 		if(p==1) {
@@ -75,69 +78,84 @@ public class Management {
 		}
 		
 		if(p==3) {
-		System.out.println(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).name
+			this.interaction.display(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).name
 							+ " " + dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).firstname
 							+ " " + "a été supprimé(e)"); 
+			this.interaction.display("");
+			this.interaction.display("");
 		this.removeClient();
-		
-		
 		}
+		}else {
+			this.interaction.display("Veuillez rentre un chiffre parmi la liste proposée");
+			this.interaction.display("");
+			this.interaction.display("que souhaitez vous faire  ?");
+			this.interaction.display("1) Modifier les informations du client"); 
+			this.interaction.display("2) Lire les information du client");
+			this.interaction.display("3) Supprimer le client");
+			
+			this.editClient();
 		}
+	}
 		
 	public void readInformation(int clientNumber) {
-		System.out.println(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).name + " "
-				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).firstname + " "
-				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).adresse + " "
+		this.interaction.display(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).name + " "
+				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).firstname + "\n"
+				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).adresse + "\n"
 				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).zipCode + " "
-				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).city + " "
+				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).city + "\n"
 				+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).phone);
 		
+		this.interaction.display("");
+		this.interaction.display("");
 	}
 	
 	public void modifyClientInformations(int clientNumber) {
 	
-		System.out.println("Quel paramètre souhaitez vous modifier ?");
-		System.out.println("");
-		System.out.println(0 + " Le nom");
-		System.out.println(1 + " Le prénom");
-		System.out.println(2 + " L'adresse");
-		System.out.println(3 + " Le code postal");
-		System.out.println(4 + " La ville");
-		System.out.println(5 + " Le numéro de téléphone");
+		this.interaction.display("Quel paramètre souhaitez vous modifier ?");
+		this.interaction.display("");
+		this.interaction.display(0 + " Le nom");
+		this.interaction.display(1 + " Le prénom");
+		this.interaction.display(2 + " L'adresse");
+		this.interaction.display(3 + " Le code postal");
+		this.interaction.display(4 + " La ville");
+		this.interaction.display(5 + " Le numéro de téléphone");
 		
 		String InputNameClient = this.interaction.readData();
+		
 		int n = Integer.parseInt(InputNameClient);
 		
 		
-		if (n==0) {System.out.println("veuillez rentrer le nouveau nom ");
+		if (n==0) {this.interaction.display("veuillez rentrer le nouveau nom ");
 		
 		String InputNewName = this.interaction.readData();
 		dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).name = InputNewName;
 		}
-		if (n==1) {System.out.println("veuillez rentrer le nouveau prénom ");
+		if (n==1) {this.interaction.display("veuillez rentrer le nouveau prénom ");
 		String InputNewFirstName = this.interaction.readData();
 		dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).firstname = InputNewFirstName;
 		
 		}
-		if (n==2) {System.out.println("veuillez rentrer la nouvelle adresse ");
+		if (n==2) {this.interaction.display("veuillez rentrer la nouvelle adresse ");
 		String InputNewAdress = this.interaction.readData();
 		dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).adresse = InputNewAdress;
 		
 		}
-		if (n==3) {System.out.println("veuillez rentrer le nouveau code postal ");
+		if (n==3) {this.interaction.display("veuillez rentrer le nouveau code postal ");
 		String InputNewZipCode = this.interaction.readData();
 		dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).zipCode = InputNewZipCode;
 		
 		}
-		if (n==4) {System.out.println("veuillez rentrer la nouvelle ville ");
+		if (n==4) {this.interaction.display("veuillez rentrer la nouvelle ville ");
 		String InputNewCity = this.interaction.readData();
 		dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).city = InputNewCity;
 		
 		}
-		if (n==5) {System.out.println("veuillez rentrer le nouveau numéro de téléphone ");
+		if (n==5) {this.interaction.display("veuillez rentrer le nouveau numéro de téléphone ");
 		String InputNewPhone = this.interaction.readData();
 		dataStock.agencyList.get(0).advisorList.get(0).listClient.get(clientNumber).phone = InputNewPhone;
 		
+		this.interaction.display("");
+		this.interaction.display("");
 		}
 		
 	}
@@ -146,19 +164,19 @@ public class Management {
 
 		String userInput = this.interaction.readData();
 		if (userInput.equals("1")) {
-			System.out.println("Vous avez choisi d'accéder à un fichier client");
-			System.out.println("Voici la liste des clients");
-			System.out.println("");
+			this.interaction.display("Vous avez choisi d'accéder à un fichier client");
+			this.interaction.display("Voici la liste des clients");
+			this.interaction.display("");
 
 			readDataClient();
 
-			System.out.println(" ");
-			System.out.println("Quel client souhaitez vous sélectionner ?");
-			System.out.println("Nom ?");
+			this.interaction.display(" ");
+			this.interaction.display("Quel client souhaitez vous sélectionner ?");
+			this.interaction.display("Nom ?");
 			String InputNameClient = this.interaction.readData();
-			System.out.println("Prénom ?");
+			this.interaction.display("Prénom ?");
 			String InputFirstNameClient = this.interaction.readData();
-			System.out.println("Vous avez choisi " + InputNameClient + " " + InputFirstNameClient);
+			this.interaction.display("Vous avez choisi " + InputNameClient + " " + InputFirstNameClient);
 
 			this.interaction.clientMenu();
 
@@ -169,7 +187,7 @@ public class Management {
 
 		}
 		if (userInput.equals("3")) {
-			System.out.println("Merci de votre visite");
+			this.interaction.display("Merci de votre visite");
 			System.exit(0);
 		}
 
@@ -204,27 +222,36 @@ public class Management {
 
 		for (int i = 0; i < dataStock.agencyList.get(0).advisorList.get(0).listClient.size(); i++) {
 
-			System.out.println(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).name + " "
+			this.interaction.display(dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).name + " "
 					+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).firstname);
 
 		}
-		System.out.println("");
+		this.interaction.display("");
 
 	}
 
 	public void chooseClient() {
-		System.out.println("Quel client souhaitez vous sélectionner ?");
+		if(dataStock.agencyList.get(0).advisorList.get(0).listClient.size()==0) {
+			this.interaction.display("cette liste ne contient pas de client");
+			this.interaction.display("veuillez créer un nouveau client");
+			createClient();
+		}else {
+			
+		
+		this.interaction.display("Quel client souhaitez vous sélectionner ?");
 		for (int i = 0; i < dataStock.agencyList.get(0).advisorList.get(0).listClient.size(); i++) {
-			System.out.println(i +" "+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).name 
+			this.interaction.display(i +" "+ dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).name 
 									+ " " +dataStock.agencyList.get(0).advisorList.get(0).listClient.get(i).firstname);
 		}
-		System.out.println("");
-		System.out.println("Choisissez le chiffre du client en question");
+		this.interaction.display("");
+		this.interaction.display("Choisissez le chiffre du client en question");
 		String InputNameClient = this.interaction.readData();
+		if (InputNameClient.matches("^-?[0-9]*$") && Integer.parseInt(InputNameClient)<dataStock.agencyList.get(0).advisorList.get(0).listClient.size()) {
 		int j = Integer.parseInt(InputNameClient);
-		System.out.println("Vous avez choisi " + dataStock.agencyList.get(0).advisorList.get(0).listClient.get(j).name
+		this.interaction.display("Vous avez choisi " + dataStock.agencyList.get(0).advisorList.get(0).listClient.get(j).name
 												+ " " +dataStock.agencyList.get(0).advisorList.get(0).listClient.get(j).firstname);
 		this.clientNumber = j;	
+		
 		
 		this.interaction.display("");
 		this.interaction.display("que souhaitez vous faire  ?");
@@ -234,6 +261,13 @@ public class Management {
 		
 		this.editClient();
 		
+		}else {
+			
+			this.interaction.display("Veuillez rentre un chiffre parmi la liste proposée");
+			chooseClient();
+			
+			}
+		}
 	}
 
 	public void exitProxibanque() {
@@ -260,4 +294,5 @@ public class Management {
 		}
 	}
 
+	
 }
