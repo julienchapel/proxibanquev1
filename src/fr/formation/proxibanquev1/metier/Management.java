@@ -3,7 +3,7 @@ package fr.formation.proxibanquev1.metier;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import fr.formation.proxibanque.persistance.DataStock;
+import fr.formation.proxibanquev1.persistance.DataStock;
 import fr.formation.proxibanquev1.presentation.Interaction;
 
 /**

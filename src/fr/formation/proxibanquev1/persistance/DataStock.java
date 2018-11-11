@@ -1,4 +1,4 @@
-package fr.formation.proxibanque.persistance;
+package fr.formation.proxibanquev1.persistance;
 
 import java.util.ArrayList;
 import java.util.List;
